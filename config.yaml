@@ -1,0 +1,29 @@
+theme: "hugo-xmin"
+baseURL: ""
+languageCode: "en-us"
+title: ""
+googleAnalytics: ""
+disqusShortname: ""
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
+footnotereturnlinkcontents: "↩"
+relativeurls: true
+
+menu:
+ main:
+  - name: Home
+    url: ""
+    weight: 1
+  - name: About
+    url: "about/"
+    weight: 2
+  - name: Categories
+    url: "categories/"
+    weight: 3
+    
+markup:
+  highlight:
+    codeFences: false
+  goldmark:
+    renderer:
+      unsafe: true    
+ 
