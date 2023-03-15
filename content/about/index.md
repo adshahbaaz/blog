@@ -1,5 +1,5 @@
 ---
-title: about
+title: About
 author: ''
 date: '2022-07-10'
 slug: []
@@ -32,5 +32,5 @@ Posts are tagged [referred] if the logic of the code was obtained by referral to
 
 ** All solutions are written using only the 'standard' library of the language being used. This makes the code (more) language agnostic and its intent clearer.
 
-There will no doubt be errors and countless refinements possible to the code published -- if found it would be of great benefit to me if you could e-mail me at :   
+There will no doubt be errors and countless refinements possible to the code published -- if found it would be of great benefit to me if you could e-mail me at :   --- 
 
