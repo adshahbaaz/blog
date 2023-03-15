@@ -1,3 +1,5 @@
+### ABOUT
+
 This blog records my solutions to mathematical/programming problems using R and/or C++. It also documents interesting implementations of data science techniques, solely in R.  The site is primarily intended to be a repository for self-study but it is hoped that some of the algorithims developed are of interest to the curious reader. Problems have been collated from a variety of websites, but the majority have been taken from the excellent <a> ProjEuler </a>. Where appropriate, multiple methods to solve the problem are presented - with a focus on the most elegant solution found. The aim is not to write production level code and thus  NOT ALL edge cases will be covered. Therefore, programs may have undefined behaviour for certain user inputs. Similarily, error handling is avoided where not absolutely necessary.
 
 A note about the programming philosophy underpinning the code on this blog:
