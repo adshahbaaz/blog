@@ -2,12 +2,12 @@
 title: "Some Lesser Known R Features"
 author: "Adnan Shahbaaz"
 date: '2022-07-03'
-slug: some-lesser-knoU]
+slug: some-lesser-known
 ---
 
 ## Introduction
 
-R is primarily a language  created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capabilities, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively. 
+R is primarily a language  created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively. 
 This page describes how to solve double sums in R using different methods, while introducing an underused function of the language. It concludes by benchmarking these methods against each other.
 
 
@@ -33,16 +33,15 @@ We use nested loops to represent the inner and outer sums. $i$ is incremented by
 sum = 0
 for(i in 1:20){
   for(j in 1:5){
-    sum = sum + (i^4)/(3+j)
+    sum = sum + i^4 / (3 + j)
   }
 }
 sum
 ```
-jknk
 
 #### ii) Using simplification of double sum
 
-For our second method we will use some basic algebric manipulation to simplify the computation. First,lets set $i^4$ to $a$ and $\frac{1}{3+j}$ to $b$. Following the procedure described above for $i=1$ and $1\le j\le5$ we get $a_1b_1 + a_1b_2 + a_1b_3+ a_1b_4 + a_1b_5$, for succinctness we write this as $a_1(b_1+b_2+b_3+b_4+b_5)$. Next we increment i by 1 and repeat the same procedure giving us $a_2b_1 + a_2b_2 + ...+a_2b_j$. 
+For our second method we will use some basic algebric manipulation to simplify the computation. First,lets set $i^4$ to $a$ and $\frac{1}{3+j}$ to $b$. Following the procedure described above for $i=1$ and $1\le j\le5$ we get $a_1b_1 + a_1b_2 + a_1b_3+ a_1b_4 + a_1b_5$, for succinctness we write this as $a_1(b_1+b_2+b_3+b_4+b_5)$. Next we increment $i$ by 1 and repeat the same procedure giving us $a_2b_1 + a_2b_2 + ...+a_2b_j$. 
 
 Thus, we have $a_1(b_1+b_2+b_3+b_4+b_5)$ + $a_2(b_1+b_2+b_3+b_4+b_5) = (a_1 +a_2)(b_1+b_2 + b_3+b_4 +b_5)$. This could be written as $(a_1 +a_2 + ..+a_i)(b_1 +b_2+..b_j)$ which using the summation notation is $\sum_{i=1}^{20} a_i \sum_{j=1}^{5} b_j$.  
 
@@ -53,7 +52,7 @@ Thus we have the representation: $$\sum_{i=1}^{20}\sum_{j=1}^{5}\frac{i^4}{(3 + 
 The following code in R implements this:
 
 ```{r simp,highlight=T}
-sum((1:20)^4) * sum(1/(4:8))
+sum((1:20) ^ 4) * sum(1/(4:8))
 ```
 
 Great, its the same answer. 
@@ -62,7 +61,7 @@ Great, its the same answer.
 
 #### iii) Using matrices
 
-Before describing the third method it would make sense to introduce the `outer` function provided in `base` r. The function takes three arguments  and returns the matrix obtained by performing the specified operation between each value of x and y.`outer(1:2,1:2)` returns the $2X2$ matrix `r outer(1:2,1:2,"+")`:
+Before describing the third method it would make sense to introduce the `outer` function provided in `base` r. The function takes three arguments  and returns the matrix obtained by performing the specified operation between each value of x and y. `outer(1:2,1:2)` returns the $2X2$ matrix `r outer(1:2,1:2,"+")`:
 
 ``` {r ex}
 outer(1:2,1:2,"+")
@@ -71,7 +70,7 @@ outer(1:2,1:2,"+")
 Since the double sum in *eq 1.* requires calculating all combinations of the values $i$ and $j$ and then computing the sum of  $f(i,j)$,  the `outer` function makes sense to use:
 
 ```{r matrix,highlight=TRUE}
-sum(outer((1:20)^4,4:8,"/"))
+sum(outer((1:20) ^ 4,4:8,"/"))
 ```
 
 We compute $f(i,j)$ through the outer function and then sum over all values in the returned matrix. 
@@ -85,7 +84,7 @@ $$\sum_{i=1}^{20}\sum_{j=1}^{5}\frac{i^4}{3 + ij}$$
 Equation 2. is slightly harder to solve as $i$ and $j$ are grouped together in the same expression in the denominator. Note that we cannot split this expression as we have in (# eqn) since the value of the denominator now depends on the value of the outer loop. We can however isolate the ij and work out its double sum. In the solution that follows ,we calculate all values of $i^4$ from $1$ to  $20$ and divide by the matrix returned by solving $3 + \sum_{i=1}^{20}\sum_{j=1}^{5}ij$ (the denominator).
 
 ```{r eq2}
-sum((1:20)^4/(3 + outer(1:20,1:5,"*")))
+sum((1:20) ^ 4/(3 + outer(1:20,1:5,"*")))
 
 
 ```
@@ -97,7 +96,7 @@ The hardest rendering of the double sum. Here not only is the value of the denom
 
 
 ```{r eq3}
-sum(outer(1:10,1:10,function(i,j)(j<=i)*i^4/(3+i*j)))
+sum(outer(1:10,1:10,function(i,j)(j <= i) * i^4/(3 + i*j)))
 ```
 
 A clever use of a logical test that takes advantage of the fact that TRUE and FALSE are represented as 1 and 0 numerically.Notice how we can define the entire function within the function call to outer. We could not do this with the previous equations since the range of the indexing of i and j differed.  
@@ -110,24 +109,24 @@ A clever use of a logical test that takes advantage of the fact that TRUE and FA
 Suppose customers labelled $C_{0}, C_{1}, . . . ,Cn$
 arrive at times $τ = 0, τ_{1}, . . . , τ_{n}$ for service by a single server. The inter arrival times $A_{1} = τ_{1} − τ_{0}, . . . ,A_n = τ_n − τ_n$ are independent and identically distributed random variables with the exponential density
 $λ_ae^{−λ_ax}$ for $x \ge 0$.
-The service times $S_0, S_1, . . . , S_n$$ are independent and identically distributed random variables which are
+The service times $S_0, S_1, . . . , S_n$ are independent and identically distributed random variables which are
 also independent of the interarrival times with the exponential density
 $λ_se^{−λ_sx}$ for $x ≥ 0$.
 Let $Wj$ denote the waiting time of customer $Cj$ . Hence customer $Cj$ leaves at time $τ_j + Wj + Sj$ . If this
-time is greater than $τ_j+1$ then the next customer, $Cj+1$ must wait for the time $τ_j + Wj + Sj − τ_j+1$. Hence, we have the recurrent relation
+time is greater than $τ_j+1$ then the next customer, $Cj+1$ must wait for the time $τ_j + Wj + Sj − τ_j+1$. Hence, we have the recurrent relation:
+
 $W0 = 0$
-
-$Wj+1 = max{0, Wj + Sj − Aj+1} for j = 0, 1, . . . , n − 1$
-
-
-q1) Write a function which simulates one outcome of $Wn$ where aRate denotes $λ_a$ and sRate denotes $λ_s$.
-
-The question that seems daunting at first, but is actually deceptively simple to solve. In fact, since the equation to solve for W has been given to us and both An and Sn are random variables drawn from a defined probability distribution, we just have to implement the recursion.
+$Wj+1 = max(0, Wj + Sj − Aj+1)$ for $j = 0, 1, . . . , n − 1$
 
 
-Understanding why  $C_{j+1}$ has to wait for $t_j + W_j + S_j -t_{j+1} if tj + wj + Sj > t_j+1, is absolutely not *necessary* for the solution. It is poor form however to not comprehend the question.If nothing else, it makes math seem more approachable. 
+q1) Write a function which simulates one outcome of $Wn$ where *aRate* denotes $λ_a$ and *sRate* denotes $λ_s$.
 
-The relation above  implies that if customers 1 time to wait, be served and leave is greater than the time customer two arrived at then customers 2 waiting time is customer 1s time of departure subtracted from customer 2 time of arrival. Thus, W is derived recursively - one customers time to get through an order is the next person waiting time and so on. Below is a function that does this:    
+The question that seems daunting at first, but is actually deceptively simple to solve. In fact, since the equation to solve for $W$ has been given to us and both $A_n$ and $S_n$ are random variables drawn from a defined probability distribution, we just have to implement the recursion.
+
+
+Understanding why  $C_{j+1}$ has to wait for $t_j + W_j + S_j -t_{j+1}$ if $tj + wj + Sj > t_j+1$, is absolutely not *necessary* for the solution. It is poor form however to not comprehend the question.If nothing else, it makes maths seem approachable. 
+
+The relation above  implies that if customers one time to wait, be served and leave is greater than the time customer two arrived at then customers two's waiting time is customer ones' time of departure subtracted from customer two's time of arrival. Thus, $W$ is derived recursively - one customers time to get through an order is the next person waiting time and so on. Below is a function that does this:    
 
 ```{r}
 
@@ -138,11 +137,11 @@ queue = function(n,aRate,sRate){
   
   while(cnt < n){
   
-  a_n = aRate*rexp(1,aRate)
+  a_n = aRate * rexp(1,aRate)
   s_n = sRate * rexp(1,sRate)
-  w = max(0,w+s_n - a_n)
+  w = max(0,w + s_n - a_n)
   
-  cnt = cnt+1
+  cnt = cnt + 1
   }
   
   return(w)

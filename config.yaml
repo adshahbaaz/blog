@@ -6,7 +6,8 @@ googleAnalytics: ""
 disqusShortname: ""
 ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 footnotereturnlinkcontents: "↩"
-relativeurls: true
+relativeURLs: true
+
 
 menu:
  main:
@@ -26,4 +27,3 @@ markup:
   goldmark:
     renderer:
       unsafe: true    
- 

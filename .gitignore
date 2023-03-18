@@ -41,3 +41,7 @@ vignettes/*.pdf
 # Public Directory
 
 public/
+
+# Projet file
+
+.RProj
