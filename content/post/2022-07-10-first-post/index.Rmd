@@ -43,7 +43,7 @@ sum
 
 For our second method we will use some basic algebric manipulation to simplify the computation. First,lets set $i^4$ to $a$ and $\frac{1}{3+j}$ to $b$. Following the procedure described above for $i=1$ and $1\le j\le5$ we get $a_1b_1 + a_1b_2 + a_1b_3+ a_1b_4 + a_1b_5$, for succinctness we write this as $a_1(b_1+b_2+b_3+b_4+b_5)$. Next we increment $i$ by 1 and repeat the same procedure giving us $a_2b_1 + a_2b_2 + ...+a_2b_j$. 
 
-Thus, we have $a_1(b_1+b_2+b_3+b_4+b_5)$ + $a_2(b_1+b_2+b_3+b_4+b_5) = (a_1 +a_2)(b_1+b_2 + b_3+b_4 +b_5)$. This could be written as $(a_1 +a_2 + ..+a_i)(b_1 +b_2+..b_j)$ which using the summation notation is $\sum_{i=1}^{20} a_i \sum_{j=1}^{5} b_j$.  
+Thus, we have $a_1(b_1+b_2+b_3+b_4+b_5) + a_2(b_1+b_2+b_3+b_4+b_5) = (a_1 +a_2)(b_1+b_2 + b_3+b_4 +b_5)$. This could be written as $(a_1 +a_2 + ..+a_i)(b_1 +b_2+..b_j)$ which using the summation notation is $\sum_{i=1}^{20} a_i \sum_{j=1}^{5} b_j$.  
 
 Thus we have the representation: $$\sum_{i=1}^{20}\sum_{j=1}^{5}\frac{i^4}{(3 + j)} = \sum_{i=1}^{20}i^4 \sum_{j=1}^{5}\frac{1}{(3 + j)}$$ The double sum is equal to the product of the sum of $i^4$ for $1\le i\le20$ and the sum of $3 +j$ for $1\le j\le5$ ! 
 
