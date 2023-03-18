@@ -10,6 +10,7 @@ slug: some-lesser-known
 ## Introduction
 
 R is primarily a language  created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively. 
+
 This page describes how to solve double sums in R using different methods, while introducing an underused function of the language. It concludes by benchmarking these methods against each other.
 
 
@@ -98,7 +99,7 @@ The division works since the default behaviour of R while multiplying a vector b
 
 ### *Eq 3*
 $$\sum_{i=1}^{10}\sum_{j=1}^{i}\frac{i^4}{3 + ij}$$
-The hardest rendering of the double sum. Here not only is the value of the denominator determined by the values of the inner and outer loops, but the upper limit of the indexing of the inner loop is also given by $i$. Thus, while $i = 1$, $3 + ij = 4$ and $j$ has only one iteration. For $i=2$ $3+ij = \sum_{j=1}^{2} (3 + ij) = 5 + 7 =  12$, while $j$ has two iterations and so on. Given that the functional form of the equation is much the same to (eq 2), we already have the tools to solve the double sum. We  just have to figure out a way to  only compute values for the expression within the double sum when $j$ is below or equal to $i$.
+The hardest rendering of the double sum. Here not only is the value of the denominator determined by the values of the inner and outer loops, but the upper limit of the indexing of the inner loop is also given by $i$. Thus, while $i = 1$, $3 + ij = 4$ and $j$ has only one iteration. For $i=2:$ $\sum_{j=1}^{2} (3 + ij) = 5 + 7 =  12$, while $j$ has two iterations and so on. Given that the functional form of the equation is much the same to (eq 2), we already have the tools to solve the double sum. We  just have to figure out a way to  only compute values for the expression within the double sum when $j$ is below or equal to $i$.
 
 
 ```{r eq3}
@@ -127,7 +128,7 @@ $Wj+1 = max(0, Wj + Sj − Aj+1)$ for $j = 0, 1, . . . , n − 1$
 
 We are to write a function that simulates one outcome of $Wn$ where *aRate* denotes $λ_a$ and *sRate* denotes $λ_s$.
 
-The question that seems daunting at first, but is actually deceptively simple to solve. In fact, since the equation to solve for $W$ has been given to us and both $A_n$ and $S_n$ are random variables drawn from a defined probability distribution, we just have to implement the recursion.
+The question seems daunting at first, but is actually deceptively simple to solve. In fact, since the equation to solve for $W$ has been given to us and both $A_n$ and $S_n$ are random variables drawn from a defined probability distribution, we just have to implement the recursion.
 
 
 Understanding why  $C_{j+1}$ has to wait for $t_j + W_j + S_j -t_{j+1}$ if $tj + wj + Sj > t_j+1$, is absolutely not *necessary* for the solution. It is poor form however to not comprehend the question.If nothing else, it makes maths seem approachable. 
