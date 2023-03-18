@@ -2,6 +2,8 @@
 title: "Some Lesser Known R Features"
 author: "Adnan Shahbaaz"
 date: '2022-07-03'
+categories: ['R']
+tags: []
 slug: some-lesser-known
 ---
 

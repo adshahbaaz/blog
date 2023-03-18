@@ -23,9 +23,10 @@ menu:
   - name: GitHub
     url: https://github.com/adshahbaaz
     weight: 4    
+
 markup:
   highlight:
     codeFences: false
   goldmark:
     renderer:
-      unsafe: true    
+      unsafe: true
