@@ -25,7 +25,7 @@ Although this looks like it might be a nightmare to solve, the process of solvin
 
 For our first attempt let's use a method that faithfully implements the logic of the procedure explained above:
 
-#### i) Using a loop
+##### i) Using a loop
 
 We use nested loops to represent the inner and outer sums. $i$ is incremented by 1 after every run of $j$ from $1$ to $5$. We then compute the sum and get our result.
 
@@ -39,7 +39,7 @@ for(i in 1:20){
 sum
 ```
 
-#### ii) Using simplification of double sum
+##### ii) Using simplification of double sum
 
 For our second method we will use some basic algebric manipulation to simplify the computation. First,lets set $i^4$ to $a$ and $\frac{1}{3+j}$ to $b$. Following the procedure described above for $i=1$ and $1\le j\le5$ we get $a_1b_1 + a_1b_2 + a_1b_3+ a_1b_4 + a_1b_5$, for succinctness we write this as $a_1(b_1+b_2+b_3+b_4+b_5)$. Next we increment $i$ by 1 and repeat the same procedure giving us $a_2b_1 + a_2b_2 + ...+a_2b_j$. 
 
@@ -59,7 +59,7 @@ Great, its the same answer.
 
 **Note** that $(3 + j)$ has been simplified to 4:8 accounting for j's indexing.
 
-#### iii) Using matrices
+##### iii) Using matrices
 
 Before describing the third method it would make sense to introduce the `outer` function provided in `base` r. The function takes three arguments  and returns the matrix obtained by performing the specified operation between each value of x and y. `outer(1:2,1:2)` returns the $2X2$ matrix `r outer(1:2,1:2,"+")`:
 
@@ -77,6 +77,8 @@ We compute $f(i,j)$ through the outer function and then sum over all values in t
 
 With this method we don't have to perform any algebraic manipulation to define a solution, while also keeping true to R's vectorised approach. Computers also tend to be very good at handling matrix arithmetic(??).
 
+<br/>
+
 ### *Eq 2* 
 
 $$\sum_{i=1}^{20}\sum_{j=1}^{5}\frac{i^4}{3 + ij}$$
@@ -90,18 +92,20 @@ sum((1:20) ^ 4/(3 + outer(1:20,1:5,"*")))
 ```
 The division works since the default behaviour of R while multiplying a vector by a matrix is done column-wise.
 
+<br/>
+
 ### *Eq 3*
 $$\sum_{i=1}^{10}\sum_{j=1}^{i}\frac{i^4}{3 + ij}$$
-The hardest rendering of the double sum. Here not only is the value of the denominator determined by the values of the inner and outer loops, but the upper limit of the indexing of the inner loop is also given by i. Thus, while i=1, 3 + ij = 4 and j has only one iteration. For i=2 3+ij = $\sum_{j=1}^{2} (3 + ij)$ = 5 + 7 =  12, while j has two iterations and so on. Given that the functional form of the equation is much the same to (eq 2), we already have the tools to solve the double sum. We  just have to figure out a way to  only compute values for the expression within the double sum when j is below or equal to i.
+The hardest rendering of the double sum. Here not only is the value of the denominator determined by the values of the inner and outer loops, but the upper limit of the indexing of the inner loop is also given by $i$. Thus, while $i = 1$, $3 + ij = 4$ and $j$ has only one iteration. For $i=2$ $3+ij = \sum_{j=1}^{2} (3 + ij) = 5 + 7 =  12$, while $j$ has two iterations and so on. Given that the functional form of the equation is much the same to (eq 2), we already have the tools to solve the double sum. We  just have to figure out a way to  only compute values for the expression within the double sum when $j$ is below or equal to $i$.
 
 
 ```{r eq3}
 sum(outer(1:10,1:10,function(i,j)(j <= i) * i^4/(3 + i*j)))
 ```
 
-A clever use of a logical test that takes advantage of the fact that TRUE and FALSE are represented as 1 and 0 numerically.Notice how we can define the entire function within the function call to outer. We could not do this with the previous equations since the range of the indexing of i and j differed.  
+A clever use of a logical test that takes advantage of the fact that TRUE and FALSE are represented as $1$ and $0$ numerically.Notice how we can define the entire function within the function call to outer. We could not do this with the previous equations since the range of the indexing of $i$ and $j$ differed.  
 
-
+<br/>
 
 
 ## *The waiting time of the $n$^th^ customer in a single server queue*
@@ -119,7 +123,7 @@ $W0 = 0$
 $Wj+1 = max(0, Wj + Sj − Aj+1)$ for $j = 0, 1, . . . , n − 1$
 
 
-q1) Write a function which simulates one outcome of $Wn$ where *aRate* denotes $λ_a$ and *sRate* denotes $λ_s$.
+We are to write a function that simulates one outcome of $Wn$ where *aRate* denotes $λ_a$ and *sRate* denotes $λ_s$.
 
 The question that seems daunting at first, but is actually deceptively simple to solve. In fact, since the equation to solve for $W$ has been given to us and both $A_n$ and $S_n$ are random variables drawn from a defined probability distribution, we just have to implement the recursion.
 
