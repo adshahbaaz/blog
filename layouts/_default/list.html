@@ -8,7 +8,7 @@
 
 <ul>
   {{ $pages := .Pages }}
-  {{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
+  {{ if .IsHome }}{{ $pages = .Site.RegularPages }} <img src="/img/the-monarch-of-the-glen-1851-sir-edwin-landseer.jpg" alt="Monarch of the Glen - Edwin Landseer (1851)" width = "600" height= "550"> <figcaption> Monarch of the Glen - Edwin Landseer (1851) </figcaption> </br> {{ end }}
   {{ range (where $pages "Section" "!=" "") }}
   <li>
     <span class="date">{{ .Date.Format "2006/01/02" }}</span>

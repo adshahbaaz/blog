@@ -122,8 +122,7 @@ $λ_se^{−λ_sx}$ for $x ≥ 0$.
 Let $Wj$ denote the waiting time of customer $Cj$ . Hence customer $Cj$ leaves at time $τ_j + Wj + Sj$ . If this
 time is greater than $τ_j+1$ then the next customer, $Cj+1$ must wait for the time $τ_j + Wj + Sj − τ_j+1$. Hence, we have the recurrent relation:
 
-$W0 = 0$
-$Wj+1 = max(0, Wj + Sj − Aj+1)$ for $j = 0, 1, . . . , n − 1$
+$W_0 = 0,Wj+1 = max(0, Wj + Sj − Aj+1)$ for $j = 0, 1, . . . , n − 1$
 
 
 We are to write a function that simulates one outcome of $Wn$ where *aRate* denotes $λ_a$ and *sRate* denotes $λ_s$.
@@ -160,5 +159,3 @@ The question and answer are both terribly simple, once understood!
 
 
 The following problems are taken from a University of Warwick Math department graded exercise sheet, <a> </a>. The elegant solution to Eq. 3 is also sourced from the paper.
-
-
