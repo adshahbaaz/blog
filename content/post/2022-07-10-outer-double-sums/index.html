@@ -1,5 +1,5 @@
 ---
-title: "Some Lesser Known R Features"
+title: "The `outer()` Function, Double Sums and a Grumpy Customer"
 author: "Adnan Shahbaaz"
 date: '2022-07-03'
 categories: ['R']
@@ -52,7 +52,7 @@ sums</code></pre>
 </div>
 <div id="iii-using-matrices" class="section level5">
 <h5>iii) Using matrices</h5>
-<p>Before describing the third method it makes sense to introduce the <code>outer</code> function provided in <code>base</code> R. The function takes three arguments and returns the matrix obtained by performing the specified operation between each value of x and y. Thus, <code>outer(1:2,1:2)</code> returns the <span class="math inline">\(2X2\)</span> matrix 2, 3, 3, 4:</p>
+<p>Before describing the third method it makes sense to introduce the <code>outer</code> function provided in <code>base</code> R. The function takes three arguments and returns the matrix obtained by performing the specified operation between each value of x and y.Thus, <code>outer(1:2,1:2)</code> returns the <span class="math inline">\(2X2\)</span> matrix 2, 3, 3, 4:</p>
 <pre class="r"><code>outer(1:2,1:2,&quot;+&quot;)</code></pre>
 <pre><code>##      [,1] [,2]
 ## [1,]    2    3

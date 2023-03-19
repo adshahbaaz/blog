@@ -4,7 +4,7 @@ author: ''
 date: '2022-07-10'
 slug: []
 ---
-This blog records my solutions to mathematical/programming problems using R, Python and/or C++. It also documents interesting implementations of data science techniques, primarily in R.  The site is primarily intended to be a repository for self-study but it is hoped that some of the algorithms developed are of interest to the curious reader. 
+<span class="myDropCap">T</span>his blog records my solutions to mathematical/programming problems using R, Python and/or C++. It also documents interesting implementations of data science techniques, primarily in R.  The site is primarily intended to be a repository for self-study but it is hoped that some of the algorithms developed are of interest to the curious reader. 
 
 Problems have been collated from a variety of websites, but the majority have been taken from the excellent [Project Euler](https://projecteuler.net/). Where appropriate, multiple methods to solve the problem are presented - with a focus on the most elegant solution found. 
 
@@ -26,11 +26,11 @@ Due to a frightening lack of natural talent, the code will not obey these rules 
 
 Below are a list of posts:
 
-- [First Post](/post/some-lesser-known)
+- [The `outer()` Function, Double Sums and a Grumpy Customer](/post/some-lesser-known)
 
 
 
-**TAGS**
+**NOTE ON TAGS**
 
 Posts are tagged [*referred*] if the logic of the code was obtained by referral to other sources. If, for the solution, there is an overdependence on a non-derived mathematical formula - which cannot be found in a GCSE math textbook, for example - the post is tagged [*math.referred*]. Every effort is made to credit the source. Where the solution is developed independent of any consultation, the post is tagged [*independent*]. Given a problem was independently solved, the time it took to come up with a solution is also published.  
 

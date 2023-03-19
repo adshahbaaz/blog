@@ -1,7 +1,7 @@
 ---
 title: 'Project Euler: Problem 15 - Lattice Paths'
 author: ''
-date: '2023-03-18'
+date: '2022-11-14'
 slug: [lattice-paths]
 categories: ['R']
 tags: ['Project-Euler']

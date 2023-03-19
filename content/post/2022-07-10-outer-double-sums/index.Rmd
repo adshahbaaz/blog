@@ -1,5 +1,5 @@
 ---
-title: "Some Lesser Known R Features"
+title: "The `outer()` Function, Double Sums and a Grumpy Customer"
 author: "Adnan Shahbaaz"
 date: '2022-07-03'
 categories: ['R']
@@ -71,7 +71,7 @@ Great, its the same answer.
 
 ##### iii) Using matrices
 
-Before describing the third method it makes sense to introduce the `outer` function provided in `base` R. The function takes three arguments  and returns the matrix obtained by performing the specified operation between each value of x and y. Thus, `outer(1:2,1:2)` returns the $2X2$ matrix `r outer(1:2,1:2,"+")`:
+Before describing the third method it makes sense to introduce the `outer` function provided in `base` R. The function takes three arguments  and returns the matrix obtained by performing the specified operation between each value of x and y.Thus, `outer(1:2,1:2)` returns the $2X2$ matrix `r outer(1:2,1:2,"+")`:
 
 ``` {r ex}
 outer(1:2,1:2,"+")
