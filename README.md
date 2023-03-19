@@ -12,7 +12,7 @@ A short note about the programming philosophy underpinning the code on this blog
 
 - The logic of the program must be straightforward.[^1]
 - The code must not rely on external libraries for calculations.[^2]
-- Brute force methods are only preferable to optimised solutions when the computation time is `$< 1$s`.
+- Brute force methods are only preferable to optimised solutions when the computation time is $< 1s$.
 - Every program must use the fewest lines of code without compromising understandability for abstraction.
 
 Due to a frightening lack of natural talent, the code will not obey these rules at all times; but it will serve admirably as a guide.
