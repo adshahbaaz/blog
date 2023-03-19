@@ -9,7 +9,7 @@ slug: some-lesser-known
 
 ## Introduction
 
-R is primarily a language  created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively. 
+<span class="myDropCap">R</span> is primarily a language  created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively. 
 
 This page describes how to solve double sums in R using different methods, while introducing an underused function of the language. It concludes by benchmarking these methods against each other.
 
@@ -17,30 +17,35 @@ This page describes how to solve double sums in R using different methods, while
 ### *Eq 1*
 
 Consider the following double sum:
+
 \begin{equation}
+(\#eq:loop1)
 
 \sum_{i=1}^{20}\sum_{j=1}^{5}\frac{i^4}{(3 + j)}
 
-(\#eq:loop1)
 \end{equation}
 
 Although this looks like it might be a nightmare to solve, the process of solving a double sum is quite simple.  We start off by evaluating the inner sum for values $1\le j\le5$ while the outer sums index is held constant at $i=1$. We continue doing this for each $1\le i\le20$ iteratively. When all $20$ sums have been calculated all that is left to do is to add all our values and find our answer!
 
 For our first attempt let's use a method that faithfully implements the logic of the procedure explained above:
 
-##### i) Using a loop
+##### i) Using a for-loop
 
 We use nested loops to represent the inner and outer sums. $i$ is incremented by 1 after every run of $j$ from $1$ to $5$. We then compute the sum and get our result.
 
 ```{r loop}
-sum = 0
+
+sums = 0
+
 for(i in 1:20){
   for(j in 1:5){
-    sum = sum + i^4 / (3 + j)
+    sums = sums + i^4 / (3 + j)
   }
 }
-sum
+sums
 ```
+
+<br/>
 
 ##### ii) Using simplification of double sum
 
@@ -62,9 +67,11 @@ Great, its the same answer.
 
 **Note** that $(3 + j)$ has been simplified to 4:8 accounting for j's indexing.
 
+<br/>
+
 ##### iii) Using matrices
 
-Before describing the third method it would make sense to introduce the `outer` function provided in `base` r. The function takes three arguments  and returns the matrix obtained by performing the specified operation between each value of x and y. `outer(1:2,1:2)` returns the $2X2$ matrix `r outer(1:2,1:2,"+")`:
+Before describing the third method it makes sense to introduce the `outer` function provided in `base` R. The function takes three arguments  and returns the matrix obtained by performing the specified operation between each value of x and y. Thus, `outer(1:2,1:2)` returns the $2X2$ matrix `r outer(1:2,1:2,"+")`:
 
 ``` {r ex}
 outer(1:2,1:2,"+")
@@ -76,9 +83,9 @@ Since the double sum in *eq 1.* requires calculating all combinations of the val
 sum(outer((1:20) ^ 4,4:8,"/"))
 ```
 
-We compute $f(i,j)$ through the outer function and then sum over all values in the returned matrix. 
+We compute $f(i,j)$ through the `outer` function and then sum over all values in the returned matrix. 
 
-With this method we don't have to perform any algebraic manipulation to define a solution, while also keeping true to R's vectorised approach. Computers also tend to be very good at handling matrix arithmetic(??).
+With this method we don't have to perform any algebraic manipulation to define a solution, while also keeping true to R's vectorised approach. Computers also tend to be very good at handling matrix arithmetic.
 
 <br/>
 
@@ -86,13 +93,14 @@ With this method we don't have to perform any algebraic manipulation to define a
 
 $$\sum_{i=1}^{20}\sum_{j=1}^{5}\frac{i^4}{3 + ij}$$
 
-Equation 2. is slightly harder to solve as $i$ and $j$ are grouped together in the same expression in the denominator. Note that we cannot split this expression as we have in (# eqn) since the value of the denominator now depends on the value of the outer loop. We can however isolate the ij and work out its double sum. In the solution that follows ,we calculate all values of $i^4$ from $1$ to  $20$ and divide by the matrix returned by solving $3 + \sum_{i=1}^{20}\sum_{j=1}^{5}ij$ (the denominator).
+Equation 2. is slightly harder to solve as $i$ and $j$ are grouped together in the same expression in the denominator. Note that we cannot split this expression as we have in **Eq.**\@ref(eq:loop1) since the value of the denominator now depends on the value of the outer loop. We can however isolate the ij and work out its double sum. In the solution that follows ,we calculate all values of $i^4$ from $1$ to  $20$ and divide by the matrix returned by solving $3 + \sum_{i=1}^{20}\sum_{j=1}^{5}ij$ (the denominator).
 
 ```{r eq2}
+
 sum((1:20) ^ 4/(3 + outer(1:20,1:5,"*")))
 
-
 ```
+
 The division works since the default behaviour of R while multiplying a vector by a matrix is done column-wise.
 
 <br/>
@@ -111,7 +119,7 @@ A clever use of a logical test that takes advantage of the fact that TRUE and FA
 <br/>
 
 
-## *The waiting time of the $n$^th^ customer in a single server queue*
+## The waiting time of the $n$^th^ customer in a single server queue
 
 Suppose customers labelled $C_{0}, C_{1}, . . . ,Cn$
 arrive at times $τ = 0, τ_{1}, . . . , τ_{n}$ for service by a single server. The inter arrival times $A_{1} = τ_{1} − τ_{0}, . . . ,A_n = τ_n − τ_n$ are independent and identically distributed random variables with the exponential density

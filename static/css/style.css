@@ -6,6 +6,13 @@ body {
 background: #fff9f5 ;
 }
 
+.myDropCap {
+  float: left;
+  font-size: 3em;
+  line-height: 0.35;
+}
+
+
 /* header and footer areas */
 .menu { padding: 0; }
 .menu li { display: inline-block; }
@@ -40,6 +47,7 @@ pre code.hljs { background: #fff9f5;}
 img, iframe, video { max-width: 100%; }
 
 main { hyphens: auto; }
+
 blockquote {
   background: #ffffff;
   border-left: 5px solid #ccc;
@@ -54,3 +62,5 @@ table {
 table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
 thead, tfoot, tr:nth-child(even) { background: #eee; }
+
+

@@ -11,6 +11,7 @@ draft: true
 ## Introduction
 
 
+`$x + 5 = y$`
 
 ## Solution
 
