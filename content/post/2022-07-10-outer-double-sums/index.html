@@ -11,7 +11,7 @@ slug: some-lesser-known
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p><span class="myDropCap">R</span> is primarily a language created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively.</p>
+<p>R is primarily a language created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively.</p>
 <p>This page describes how to solve double sums in R using different methods, while introducing an underused function of the language. It concludes by benchmarking these methods against each other.</p>
 <div id="eq-1" class="section level3">
 <h3><em>Eq 1</em></h3>
@@ -26,7 +26,7 @@ slug: some-lesser-known
 <p>For our first attempt let’s use a method that faithfully implements the logic of the procedure explained above:</p>
 <div id="i-using-a-for-loop" class="section level5">
 <h5>i) Using a for-loop</h5>
-<p>We use nested loops to represent the inner and outer sums. <span class="math inline">\(i\)</span> is incremented by 1 after every run of <span class="math inline">\(j\)</span> from <span class="math inline">\(1\)</span> to <span class="math inline">\(5\)</span>. We then compute the sum and get our result.</p>
+<p>We use nested loops to represent the inner and outer sums. <span class="math inline">\(i\)</span> is incremented by <span class="math inline">\(1\)</span> after every run of <span class="math inline">\(j\)</span> from <span class="math inline">\(1\)</span> to <span class="math inline">\(5\)</span>. We then compute the sum and get our result.</p>
 <pre class="r"><code>sums = 0
 
 for(i in 1:20){

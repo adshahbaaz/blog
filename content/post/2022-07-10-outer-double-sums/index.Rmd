@@ -9,7 +9,7 @@ slug: some-lesser-known
 
 ## Introduction
 
-<span class="myDropCap">R</span> is primarily a language  created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively. 
+R is primarily a language  created for and by statisticians. In this field it performs remarkably, and is an extremely powerful tool in solving mathematical complexities. A main feature of the language is its vectorisation capability, largely circumventing the need for explicit for-loops. Though efficient in lower level languages like C++, looping is generally ill-advised when programming in R, as there usually is a more elegant and efficient method to compute values iteratively / recursively. 
 
 This page describes how to solve double sums in R using different methods, while introducing an underused function of the language. It concludes by benchmarking these methods against each other.
 
@@ -31,7 +31,7 @@ For our first attempt let's use a method that faithfully implements the logic of
 
 ##### i) Using a for-loop
 
-We use nested loops to represent the inner and outer sums. $i$ is incremented by 1 after every run of $j$ from $1$ to $5$. We then compute the sum and get our result.
+We use nested loops to represent the inner and outer sums. $i$ is incremented by $1$ after every run of $j$ from $1$ to $5$. We then compute the sum and get our result.
 
 ```{r loop}
 
