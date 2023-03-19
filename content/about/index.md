@@ -1,10 +1,12 @@
 ---
 title: About
 author: ''
-date: '2022-07-10'
+date: ''
 slug: []
 ---
-<span class="myDropCap">T</span>his blog records my solutions to mathematical/programming problems using R, Python and/or C++. It also documents interesting implementations of data science techniques, primarily in R.  The site is primarily intended to be a repository for self-study but it is hoped that some of the algorithms developed are of interest to the curious reader. 
+<p class="drop"><span class="newthought">This blog records my solutions to mathematical/programming problems using R, Python and/or C++.</span></p>
+
+It also documents interesting implementations of data science techniques, primarily in R.  The site is primarily intended to be a repository for self-study but it is hoped that some of the algorithms developed are of interest to the curious reader. 
 
 Problems have been collated from a variety of websites, but the majority have been taken from the excellent [Project Euler](https://projecteuler.net/). Where appropriate, multiple methods to solve the problem are presented - with a focus on the most elegant solution found. 
 

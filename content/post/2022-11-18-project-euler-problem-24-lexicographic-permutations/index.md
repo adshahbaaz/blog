@@ -7,9 +7,18 @@ categories:
   - R
 tags:
   - Project-Euler
-  - algorithms
+  - Algorithms
 ---
 
+## Question
+
+
+
+
+## Solution
+
+
+```{r}
 # /lexicographic permutations */
 
 
@@ -106,5 +115,5 @@ f = function(x){
   return(c(num,set))
   
   
-  
 }
+```

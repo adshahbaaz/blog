@@ -7,9 +7,18 @@ categories:
   - R
 tags:
   - Project-Euler
-  - algorithms
+  - Algorithms
 ---
 
+## Question
+
+
+
+
+## Solution
+
+
+```{r}
 collatz = function(x) {
   n= 2:x
 
@@ -43,3 +52,4 @@ collatz = function(x) {
 
 system.time(collatz(1e6))
 options("scipen" = 400,"digits"=4)
+```

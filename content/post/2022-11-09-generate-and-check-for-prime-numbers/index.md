@@ -1,19 +1,28 @@
 ---
 title: Generate and Check for Prime Numbers
-author: ''
+author: 'Adnan Shahbaaz'
 date: '2022-11-09'
 slug: ''
 categories:
   - R
 tags:
-  - Project-Euler
-  - algorithms
+  - Algorithms
 draft: true
 ---
 
+## Introduction
+
+
+<br/>
+
+## Proposed Solution
+
+
+```{r}
 
 #/* Prime numbers */ #
-p=1523
+
+p = 1523
 
 
 
@@ -44,9 +53,11 @@ isprime = function(p){
 
 system.time(sapply(seq(1e6,2e6,10),isprime))
 system.time(sapply(seq(1e6,2e6,10),ISprime))
+```
 
-sapply(seq(1e6,2e6,10),ISprime)
 
+
+```{r}
 #///
 
   prime_gen = function(n){
@@ -107,3 +118,4 @@ system.time(isprime(2e6))
 system.time(PrimeSieve(1e5))
 isprime(10)
 
+```

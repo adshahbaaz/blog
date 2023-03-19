@@ -25,6 +25,7 @@ Consider the following double sum:
 
 \end{equation}
 
+
 Although this looks like it might be a nightmare to solve, the process of solving a double sum is quite simple.  We start off by evaluating the inner sum for values $1\le j\le5$ while the outer sums index is held constant at $i=1$. We continue doing this for each $1\le i\le20$ iteratively. When all $20$ sums have been calculated all that is left to do is to add all our values and find our answer!
 
 For our first attempt let's use a method that faithfully implements the logic of the procedure explained above:

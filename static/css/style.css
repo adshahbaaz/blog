@@ -6,6 +6,17 @@ body {
 background: #fff9f5 ;
 }
 
+.author{
+font-size: 1em
+}
+.date{
+font-size: 1em
+}
+
+ h2 {
+  font-style: italic
+}
+
 
 .level2 h2 ~ p:first-of-type::first-letter {
   font-size: 3em;
@@ -69,5 +80,37 @@ table {
 table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
 thead, tfoot, tr:nth-child(even) { background: #eee; }
+
+
+/* Side Notes */
+
+.sidenote,
+.marginnote {
+    float: right;
+    clear: right;
+    margin-right: -60%;
+    width: 50%;
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+    font-size: .8rem;
+    line-height: 1.3;
+    vertical-align: baseline;
+    position: relative;
+}
+
+/* Add stylised line */
+span.newthought {
+  font-variant: small-caps;
+  letter-spacing: .05em;
+  font-size: 1.1em;
+}
+
+
+p.drop:first-letter {
+ font-size: 3em;
+  padding: .1em .1em 0 0;
+  float: left;
+  line-height: 1em;
+}
 
 

@@ -8,10 +8,8 @@ tags: ['Project-Euler']
 draft: true
 ---
 
-## Introduction
+## Question
 
-
-`$x + 5 = y$`
 
 ## Solution
 

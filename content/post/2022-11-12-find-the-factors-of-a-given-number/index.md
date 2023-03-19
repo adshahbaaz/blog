@@ -6,10 +6,17 @@ slug: ''
 categories:
   - R
 tags:
-  - Project-Euler
-  - algorithms
+  - Algorithms
 ---
 
+## Introduction
+
+
+
+
+## Proposed Algorithm
+
+```{r}
 # find factors 
 
 n=1e3
@@ -36,3 +43,4 @@ factors = function(n){
   
   return(sort(c(1,f_b,f_a)))
 }
+```
