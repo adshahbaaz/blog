@@ -5,7 +5,7 @@ date: '2022-11-14'
 slug: [lattice-paths]
 categories: ['R']
 tags: ['Project-Euler']
-draft: true
+draft: false
 ---
 
 ## Question

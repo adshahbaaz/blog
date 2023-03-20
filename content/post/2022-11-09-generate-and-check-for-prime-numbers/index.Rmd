@@ -21,7 +21,7 @@ Lets work on reducing the complexity of the prior as these will feed into our de
 
 <br/>
 
-## Proposed Solution
+### Proposed Solution
 
 Immediately, few optimisations become obvious. Any number can only be divisible by a number lesser than itself until a certain point. Specifically, as $m$ approaches $n$ , $2m$ ($2$ since its the smallest multiple greater than $1$) must be lesser than $n$. Further, $m^2$ must be lesser than $n$. Since after m^2 the right operand (must necessarily be a number < m^2 to multiply to n) decreases in value and iterates through numbers we have already been through, eliminating redundant computations. We can thus substantially reduce our loop from `2:n` to `2:sqrt(n)`. 
 
@@ -30,7 +30,6 @@ Everytime we find a prime we divide prime:n by prime and remove divisible intege
 Thus, we reduce N in each pass by removing numbers that were a multiple of some previous prime. This is the sieve of Eratosthenes, one of the oldest methods of finding prime numbers. The immediate advantage to this is the shortening of the array as we get closer to n. at what rate this reduces is different for different intervals of x:n, and is [<cite>]. 
 
 
-Right, lets get started:
 
 <br/>
 
@@ -39,8 +38,6 @@ Right, lets get started:
 
 
 ```{r fn1}
-
-#/* Prime numbers */ #
 
 
 isprime = function(p){
@@ -66,6 +63,7 @@ isprime = function(p){
 
 system.time(sapply(seq(1e6,1e7,10),isprime))
 ```
+
 We assume the number is  prime until the algorithm tells us otherwise. 
 
 <br/>
@@ -74,7 +72,6 @@ We assume the number is  prime until the algorithm tells us otherwise.
 
 ```{r fn2}
 
-#///
 
 prime_gen = function(n){
   

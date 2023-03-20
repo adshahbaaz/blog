@@ -11,19 +11,20 @@ tags:
 
 ## Introduction
 
+Often times simple problems demand clarity. 
+
+Here we would like to write an algorithm that returns all the factors of a particular n.  
 
 
 
 ## Proposed Algorithm
 
 ```{r}
-# find factors 
 
-n=1e3
 
 factors = function(n){
   
-  n_l =2 : ceiling(sqrt(n))
+  n_l = 2 : ceiling(sqrt(n))
   
   f_b = n_l[n %% n_l == 0]
   
@@ -34,13 +35,15 @@ factors = function(n){
   
   for(i in 1: length(f_b)){
     
-    upr = ceiling(sqrt(n)+1):ceiling((n/f_b[i]))
+    upr = ceiling(sqrt(n) + 1):ceiling((n / f_b[i]))
     
     f_a[i] =  upr[upr * f_b[i] == n]
     
   }
   
-  
   return(sort(c(1,f_b,f_a)))
 }
+
+
+factors(15647)
 ```

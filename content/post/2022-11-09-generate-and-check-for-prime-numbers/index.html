@@ -17,20 +17,15 @@ tags:
 <p>Although the logical rule remains the same the complexity of the algorithm changes substantially when constructing a prime generator vs a verifier. For the former,we increment n by 1 each pass and run 2:(n-1) operations on n, to check if it is prime O(n^2). If none of the 2:(n-1) divide n by a natural number, n is prime, else n is not prime. For the latter we run through 2:(n-1) once O(n).</p>
 <p>Lets work on reducing the complexity of the prior as these will feed into our definition of the latter.</p>
 <p><br/></p>
-</div>
-<div id="proposed-solution" class="section level2">
-<h2>Proposed Solution</h2>
+<div id="proposed-solution" class="section level3">
+<h3>Proposed Solution</h3>
 <p>Immediately, few optimisations become obvious. Any number can only be divisible by a number lesser than itself until a certain point. Specifically, as <span class="math inline">\(m\)</span> approaches <span class="math inline">\(n\)</span> , <span class="math inline">\(2m\)</span> (<span class="math inline">\(2\)</span> since its the smallest multiple greater than <span class="math inline">\(1\)</span>) must be lesser than <span class="math inline">\(n\)</span>. Further, <span class="math inline">\(m^2\)</span> must be lesser than <span class="math inline">\(n\)</span>. Since after m^2 the right operand (must necessarily be a number &lt; m^2 to multiply to n) decreases in value and iterates through numbers we have already been through, eliminating redundant computations. We can thus substantially reduce our loop from <code>2:n</code> to <code>2:sqrt(n)</code>.</p>
 <p>Everytime we find a prime we divide prime:n by prime and remove divisible integers as these cannot be prime themselves. We update the n’s we go through with his new list and continue util the nth term is reached.<br />
 Thus, we reduce N in each pass by removing numbers that were a multiple of some previous prime. This is the sieve of Eratosthenes, one of the oldest methods of finding prime numbers. The immediate advantage to this is the shortening of the array as we get closer to n. at what rate this reduces is different for different intervals of x:n, and is [<cite>].</p>
-<p>Right, lets get started:</p>
 <p><br/></p>
 <div id="prime-number-checker" class="section level4">
 <h4>Prime Number Checker</h4>
-<pre class="r"><code>#/* Prime numbers */ #
-
-
-isprime = function(p){
+<pre class="r"><code>isprime = function(p){
   
   if(p &lt; 0) return(F)
   
@@ -53,15 +48,13 @@ isprime = function(p){
 
 system.time(sapply(seq(1e6,1e7,10),isprime))</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.35    0.00    1.22</code></pre>
+##    0.20    0.00    1.08</code></pre>
 <p>We assume the number is prime until the algorithm tells us otherwise.</p>
 <p><br/></p>
 </div>
 <div id="prime-number-generator" class="section level4">
 <h4>Prime Number Generator</h4>
-<pre class="r"><code>#///
-
-prime_gen = function(n){
+<pre class="r"><code>prime_gen = function(n){
   
   
   sieve = 2:n # initialise sieve
@@ -84,5 +77,6 @@ prime_gen = function(n){
 }</code></pre>
 <p>We append <code>sieve</code> to the <code>return()</code> to retrieve the last prime before the <code>while</code> loop terminates, as <code>primes[i]</code> would not have been updated.</p>
 <p>Notice that we initialise an array from <code>2:n</code> but loop only till <code>p</code> has been assigned a number greater than or equal to <span class="math inline">\(\sqrt n\)</span>.</p>
+</div>
 </div>
 </div>

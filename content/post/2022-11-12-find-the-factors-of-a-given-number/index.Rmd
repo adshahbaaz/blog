@@ -1,0 +1,78 @@
+---
+title: Find the Factors of a Given Number
+subtitle: "HEllo"
+author: ''
+date: '2022-11-12'
+slug: ''
+categories:
+  - R
+tags:
+  - Algorithms
+---
+
+
+## Introduction
+
+Often times simple problems demand harder thought for an elegant solution. 
+
+Here we would like to write an algorithm that returns all the factors for a particular n.  
+
+To optimise our algorithm, let us consider the limits of the factors of a number. Once we reach the square root of $n$ all succesive numbers that are factors of $n$ will have some multiple that belongs to the set of numbers below $n$. Thus, The greatest factor of $n$ has to be $n$ divided by one of the values retrieved from the first array.      . 
+
+We break our solution down into two parts. First, we limit our search for factors below $\sqrt n$ and select  factors of $n$ from this array.Then we search for factors above this threshold, knowing that there exists part of a pair in the array above that successfully multiplies by a number(s) in the current list to yield $n$. The combined result of these two operations will yield all factors of for the given $n$.
+
+ 
+The first step improves the computation time over the naive approach drastically. $O(\sqrt n)$ from $O(n)$. The second, allows us to shorten the set of numbers from $\sqrt n$ to $n$ we need to divide by.       
+
+
+
+
+### Proposed Algorithm
+
+
+
+```{r}
+
+n = 50
+
+factors = function(n){
+  
+  n_l = 2 : ceiling(sqrt(n)) # initialise range below sqrt n
+  f_b = n_l[n %% n_l == 0] # retain factors
+  
+  if(!length(f_b)) return(c(1,n))  # if prime 
+
+  f_a = c()
+  
+  for(i in 1: length(f_b)){
+    
+    upr = ceiling(sqrt(n) + 1):ceiling((n / f_b[i])) # initialise range above sqrt n
+    f_a[i] =  upr[upr * f_b[i] == n]
+    
+  }
+  return(sort(c(1,f_b,f_a)))
+}
+
+system.time(factors(1e8))
+
+```
+
+
+We need to loop through each value of `f_b` , as this can't (in any simple way) be done through a vectorised approach. I would be extremely interested to see a fully vectorised implementation. Do get in touch if you're on to something.  
+
+
+### Naive Approach
+
+```{r naive}
+
+dummy = function(n){
+   
+  f = 2
+  
+  for(i in 2:(n/f)){
+    if(n %% i == 0) f = i  
+   }
+}
+
+system.time(dummy(1e8))
+```
