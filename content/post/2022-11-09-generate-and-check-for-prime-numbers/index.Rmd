@@ -1,0 +1,107 @@
+---
+title: Generate and Check for Prime Numbers
+author: 'Adnan Shahbaaz'
+date: '2022-11-09'
+slug: ''
+categories:
+  - R
+tags:
+  - Algorithms
+---
+
+## Introduction
+
+In 300 BC, Euclid demonstrated that there are infinitely many primes. Although the rule to check if a number is  prime is easy to define and understand, it is a hard task for a human to go through n natural numbers to do so. This makes it a suitable task for computers, who implement a rule faithfully for long stretches of time. "Clever idiots" as Bjarene Stroustrup calls them. 
+
+Although the logical rule remains the same the complexity of the algorithm changes substantially when constructing a prime generator vs a verifier. For the former,we increment n by 1 each pass and run 2:(n-1) operations on n, to check if it is prime O(n^2). If none of the 2:(n-1) divide n by a natural number, n is prime, else n is not prime. For the latter we run through 2:(n-1) once O(n).
+
+Lets work on reducing the complexity of the prior as these will feed into our definition of the latter.
+
+
+
+<br/>
+
+## Proposed Solution
+
+Immediately, few optimisations become obvious. Any number can only be divisible by a number lesser than itself until a certain point. Specifically, as $m$ approaches $n$ , $2m$ ($2$ since its the smallest multiple greater than $1$) must be lesser than $n$. Further, $m^2$ must be lesser than $n$. Since after m^2 the right operand (must necessarily be a number < m^2 to multiply to n) decreases in value and iterates through numbers we have already been through, eliminating redundant computations. We can thus substantially reduce our loop from `2:n` to `2:sqrt(n)`. 
+
+
+Everytime we find a prime we divide prime:n by prime and remove divisible integers as these cannot be prime themselves. We update the n's we go through with his new list and continue util the nth term is reached.  
+Thus, we reduce N in each pass by removing numbers that were a multiple of some previous prime. This is the sieve of Eratosthenes, one of the oldest methods of finding prime numbers. The immediate advantage to this is the shortening of the array as we get closer to n. at what rate this reduces is different for different intervals of x:n, and is [<cite>]. 
+
+
+Right, lets get started:
+
+<br/>
+
+
+#### Prime Number Checker
+
+
+```{r fn1}
+
+#/* Prime numbers */ #
+
+
+isprime = function(p){
+  
+  if(p < 0) return(F)
+  
+  fct = 2 # set initial factor to two
+  sieve = 2:floor(sqrt(p)) # initialise sieve
+  isprime = T 
+  
+  while(!is.na(fct)){ # run loop until we exhaust sieve of all elements
+    
+    if(p %% fct == 0) {isprime = F ; break}
+    
+    sieve = sieve[sieve %% fct != 0] # sieve
+    
+    fct = sieve[1] # set factor to smallest remaining prime
+  }
+  
+  return(isprime)
+  
+}
+
+system.time(sapply(seq(1e6,1e7,10),isprime))
+```
+We assume the number is  prime until the algorithm tells us otherwise. 
+
+<br/>
+
+#### Prime Number Generator
+
+```{r fn2}
+
+#///
+
+prime_gen = function(n){
+  
+  
+  sieve = 2:n # initialise sieve
+  p = 2
+  primes = 0
+  i = 1
+  
+  while(p < sqrt(n)){
+    
+    p = sieve[1]
+    
+    primes[i] = p # store primes 
+    sieve = sieve[sieve %% p != 0] # sieve
+    
+    i = length(primes) + 1 # next spot in primes
+  }
+
+ return(c(primes,sieve))
+
+}
+
+
+
+```
+
+We append `sieve` to the `return()` to retrieve the last prime before the `while` loop terminates, as `primes[i]` would not have been updated.  
+
+Notice that we initialise an array from `2:n` but loop only till `p` has been assigned a number greater than or equal to $\sqrt n$. 

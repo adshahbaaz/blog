@@ -4,9 +4,7 @@ author: ''
 date: ''
 slug: []
 ---
-<p class="drop"><span class="newthought">This blog records my solutions to mathematical/programming problems using R, Python and/or C++.</span></p>
-
-It also documents interesting implementations of data science techniques, primarily in R.  The site is primarily intended to be a repository for self-study but it is hoped that some of the algorithms developed are of interest to the curious reader. 
+<p class="drop"><span class ="newthought">This blog records my solutions to mathematical/programming problems using R, Python and/or C++.</span> It also documents interesting implementations of data science techniques, primarily in R.</p>  The site is intended to be a repository for self-study but it is hoped that some of the algorithms developed are of interest to the curious reader. 
 
 Problems have been collated from a variety of websites, but the majority have been taken from the excellent [Project Euler](https://projecteuler.net/). Where appropriate, multiple methods to solve the problem are presented - with a focus on the most elegant solution found. 
 
@@ -42,6 +40,6 @@ There will no doubt be errors and countless refinements possible to the code pub
 
 [^1]: What is meant by this is that the control flow of the program must be uncluttered, avoiding nested conditions and loops as much as possible.
 
-[^2]:  All solutions are written using only the 'standard' library of the language being used. This makes the code (more) language agnostic and its intent clearer.
+[^2]:  All solutions are written using only the 'standard' library of the language being used. This makes the code language agnostic and its intent clearer.
 
 
