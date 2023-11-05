@@ -12,7 +12,7 @@ tags: []
 
 if(weekdays(Sys.Date()) %in% c("Saturday","Sunday"))
 
-date = as.character(Sys.Date() - 2)
+date = as.character(Sys.Date()-4)
 
 date_split = unlist(strsplit(date,"-"))
 
