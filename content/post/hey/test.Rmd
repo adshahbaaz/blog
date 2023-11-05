@@ -1,0 +1,36 @@
+---
+title: live_data
+author: ''
+date: '2023-11-05'
+slug: []
+categories: []
+tags: []
+---
+
+
+```{r}
+
+if(weekdays(Sys.Date()) %in% c("Saturday","Sunday"))
+
+date = as.character(Sys.Date() - 2)
+
+date_split = unlist(strsplit(date,"-"))
+
+y = date_split[1]
+m = date_split[2]
+d = date_split[3]
+
+link =  paste0("https://archives.nseindia.com/content/nsccl/fao_participant_oi_",d,m,y,".csv")
+
+csv = read.csv(link,skip = 1)
+csv = csv[-5,]
+csv$Date = date
+
+```
+
+```{r}
+knitr::kable(csv)
+
+
+
+```

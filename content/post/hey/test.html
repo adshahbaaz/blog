@@ -1,0 +1,141 @@
+---
+title: live_data
+author: ''
+date: '2023-11-05'
+slug: []
+categories: []
+tags: []
+---
+
+
+
+<pre class="r"><code>if(weekdays(Sys.Date()) %in% c(&quot;Saturday&quot;,&quot;Sunday&quot;))
+
+date = as.character(Sys.Date() - 2)
+
+date_split = unlist(strsplit(date,&quot;-&quot;))
+
+y = date_split[1]
+m = date_split[2]
+d = date_split[3]
+
+link =  paste0(&quot;https://archives.nseindia.com/content/nsccl/fao_participant_oi_&quot;,d,m,y,&quot;.csv&quot;)
+
+csv = read.csv(link,skip = 1)
+csv = csv[-5,]
+csv$Date = date</code></pre>
+<pre class="r"><code>knitr::kable(csv)</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="3%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="7%" />
+<col width="6%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="6%" />
+<col width="7%" />
+<col width="7%" />
+<col width="6%" />
+<col width="6%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Client.Type</th>
+<th align="right">Future.Index.Long</th>
+<th align="right">Future.Index.Short</th>
+<th align="right">Future.Stock.Long</th>
+<th align="right">Future.Stock.Short</th>
+<th align="right">Option.Index.Call.Long</th>
+<th align="right">Option.Index.Put.Long</th>
+<th align="right">Option.Index.Call.Short</th>
+<th align="right">Option.Index.Put.Short</th>
+<th align="right">Option.Stock.Call.Long</th>
+<th align="right">Option.Stock.Put.Long</th>
+<th align="right">Option.Stock.Call.Short</th>
+<th align="right">Option.Stock.Put.Short</th>
+<th align="right">Total.Long.Contracts</th>
+<th align="right">Total.Short.Contracts</th>
+<th align="left">Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Client</td>
+<td align="right">262525</td>
+<td align="right">127284</td>
+<td align="right">1833623</td>
+<td align="right">212561</td>
+<td align="right">4284561</td>
+<td align="right">3768922</td>
+<td align="right">4330653</td>
+<td align="right">4270819</td>
+<td align="right">1136743</td>
+<td align="right">453198</td>
+<td align="right">725804</td>
+<td align="right">605859</td>
+<td align="right">11739572</td>
+<td align="right">10272980</td>
+<td align="left">2023-11-03</td>
+</tr>
+<tr class="even">
+<td align="left">DII</td>
+<td align="right">69455</td>
+<td align="right">61284</td>
+<td align="right">159395</td>
+<td align="right">1944256</td>
+<td align="right">0</td>
+<td align="right">72760</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">116650</td>
+<td align="right">0</td>
+<td align="right">301619</td>
+<td align="right">2122190</td>
+<td align="left">2023-11-03</td>
+</tr>
+<tr class="odd">
+<td align="left">FII</td>
+<td align="right">44516</td>
+<td align="right">207210</td>
+<td align="right">1210952</td>
+<td align="right">1337908</td>
+<td align="right">950825</td>
+<td align="right">1210550</td>
+<td align="right">795164</td>
+<td align="right">760205</td>
+<td align="right">45134</td>
+<td align="right">50686</td>
+<td align="right">51845</td>
+<td align="right">38578</td>
+<td align="right">3512662</td>
+<td align="right">3190910</td>
+<td align="left">2023-11-03</td>
+</tr>
+<tr class="even">
+<td align="left">Pro</td>
+<td align="right">52840</td>
+<td align="right">33558</td>
+<td align="right">447985</td>
+<td align="right">157230</td>
+<td align="right">1294474</td>
+<td align="right">1260887</td>
+<td align="right">1404043</td>
+<td align="right">1282095</td>
+<td align="right">386597</td>
+<td align="right">458343</td>
+<td align="right">674184</td>
+<td align="right">317790</td>
+<td align="right">3901126</td>
+<td align="right">3868899</td>
+<td align="left">2023-11-03</td>
+</tr>
+</tbody>
+</table>
