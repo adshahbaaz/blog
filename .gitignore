@@ -45,3 +45,6 @@ public/
 # Projet file
 
 .RProj
+
+# Local Netlify folder
+.netlify
